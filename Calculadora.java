@@ -10,8 +10,9 @@ public class Calculadora{
     static double errorMeta = 0;
     static double errorAproximado = 0;
     static double cifras;
+    static Scanner sc = new Scanner(System.in);
     public static void main (String []args){
-        Scanner sc = new Scanner(System.in);
+        
         int opc = 1;
         while(opc != 0){
             System.out.println("1.- Calcular seno");
@@ -23,7 +24,7 @@ public class Calculadora{
             System.out.println("0.- Salir");
             System.out.println("Ingrese una opción: ");
             opc = sc.nextInt();
-
+            double x = 0;
             //Evalua que se haya1 ingresado las cifras significativas antes de comenzar el programa
             if(opc != 6){
                 while(objetivoCifras == 0){
@@ -35,33 +36,62 @@ public class Calculadora{
             }
             switch(opc){
                 case 1:
-                
-                break;
+                    System.out.print("Ingrese su valor x para hacer el cálculo: ");
+                    x = gradosRad(sc.nextDouble());
+                    seno(x);
+                    break;
                 case 2:
-                System.out.println(coseno(toRadian(60)));
-                break;
+                    System.out.print("Ingrese su valor x para hacer el cálculo: ");
+                    x = gradosRad(sc.nextDouble());
+                    System.out.println(coseno(toRadian(60)));
+                    break;
                 case 3:
-                break;
+                    break;
                 case 4:
-                break;
+                    break;
                 case 5:
-                break;
+                    break;
                 case 6:
                     System.out.print("Ingrese el número de cifras significativas precisas: ");
                     objetivoCifras = sc.nextInt();
                     errorMeta = eS(objetivoCifras);
-                break;
+                    break;
                 case 0:
-                System.out.println("Cadena");
-                break;
+                    System.out.println("Cadena");
+                    break;
                 default:
-                break;
+                    break;
             }
         }
         sc.close();
     }
-
     
+
+    //Pregunta si el cálculo será en gradaos o en radianes
+    public static double gradosRad(double x){
+        double a = 0;
+        int opcA = 0;
+        while(opcA < 1 || opcA > 2){
+            System.out.println("El valor de x se encuentra en:");
+            System.out.println("1. x en radianes");
+            System.out.println("2. x en grados");
+            System.out.print("Ingrese su respuesta: ");
+            opcA = sc.nextInt();
+            switch (opcA) {
+                case 1:
+                    a = x;
+                    break;
+                case 2:
+                    a = toRadian(x);
+                    break;
+                default:
+                    break;
+            }
+        }
+        
+        return a;
+    }
+
     //Convierte una cantidad de grados a radianes.
     public static double toRadian(double cant){
         return (cant * (PI/180));
