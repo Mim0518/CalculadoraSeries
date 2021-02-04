@@ -38,7 +38,8 @@ public class Calculadora{
                 case 1:
                     System.out.print("Ingrese su valor x para hacer el cálculo: ");
                     x = gradosRad(sc.nextDouble());
-                    seno(x);
+                    System.out.println("Todo bien");
+                    System.out.println(seno(x));
                     break;
                 case 2:
                     System.out.print("Ingrese su valor x para hacer el cálculo: ");
@@ -65,13 +66,39 @@ public class Calculadora{
         }
         sc.close();
     }
-    
+    //Calculo seno de x
+    public static double seno(double n){
+        double eA = 10;
+        double temp = 0;
+        double tempSuma = 0;
+        double tempSumaA =0;
+        int c = 0;
+        while(eA > errorMeta){
+            temp = (pow(-1, c) / factorial((2*c)+1) * pow(n, (2*c) + 1));
+        
+            if(c == 0){
+                tempSuma = temp;
+                System.out.println(tempSuma);
+            } else {
+                
+                tempSumaA = tempSuma;
+                tempSuma = tempSuma + temp;
+                eA = calEA(tempSuma, tempSumaA);
 
+            }
+        }
+        return tempSuma;  
+    }
+
+    //Calcula EA
+    public static double calEA(double VV, double VA){
+        return ((absD(VV -VA)) / VV ) * 100;
+    }
     //Pregunta si el cálculo será en gradaos o en radianes
     public static double gradosRad(double x){
         double a = 0;
         int opcA = 0;
-        while(opcA < 1 || opcA > 2){
+        while(opcA != -1){
             System.out.println("El valor de x se encuentra en:");
             System.out.println("1. x en radianes");
             System.out.println("2. x en grados");
@@ -80,15 +107,16 @@ public class Calculadora{
             switch (opcA) {
                 case 1:
                     a = x;
+                    opcA = -1;
                     break;
                 case 2:
                     a = toRadian(x);
+                    opcA = -1;
                     break;
                 default:
                     break;
             }
         }
-        
         return a;
     }
 
