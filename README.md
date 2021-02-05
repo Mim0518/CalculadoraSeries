@@ -1,6 +1,6 @@
 # CalculadoraSeries
 Librería que hace los cálculos de las siguientes funciones:  
-Seno ❌  
+Seno ✅  
 Coseno ✅  
 Logaritmo natural ❌  
 Raíz cuadrada ❌  
