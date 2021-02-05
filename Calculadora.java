@@ -2,7 +2,6 @@
 Guillermo Moreno Rivera y Luis Fernando Chávez Jiménez
 02/February/2021
 */
-
 import java.util.Scanner;
 public class Calculadora{
     static double PI = 3.14159265;
@@ -86,7 +85,18 @@ public class Calculadora{
         }
         return tempSuma;  
     }
-
+    //Calculo de coseno
+    public static double coseno(double x){
+        double sumando, sumatoria = 0;
+        // limite superior, iteracion de la sumatoria
+        int n = 0; 
+        do {
+            sumando = pow(-1, n) / factorial(2 * n) * pow(x, 2*n);
+            sumatoria = sumatoria + sumando;
+            n = n + 1;
+        } while (absD(sumando) > errorMeta);
+        return sumatoria;
+    }
     //Calcula EA
     public static double calEA(double VV, double VA){
         return ((absD(VV -VA)) / VV ) * 100;
@@ -123,24 +133,13 @@ public class Calculadora{
     }
 
     //Calcula el factorial de un número.
-    public static double factorial(int x){
-        int fact = 1;
+    public static double factorial(double x){
+        double fact = 1;
         while(x>0){
             fact = fact * x;
             x--;
         }
         return fact;
-    }
-    public static double coseno(double x){
-        double sumando, sumatoria = 0, precision = 0.0001d;
-        // limite superior, iteracion de la sumatoria
-        int n = 0; 
-        do {
-            sumando = pow(-1, n) / factorial(2 * n) * pow(x, 2*n);
-            sumatoria = sumatoria + sumando;
-            n = n + 1;
-        } while (Math.abs(sumando) > precision);
-        return sumatoria;
     } 
     //Eleva a la potencia de un número positivo
     public static double pow(double numero, double potencia){
@@ -153,7 +152,6 @@ public class Calculadora{
         }
         return res;
     }
-
     //Calcula el valor absoluto de un número con punto decimal
     public static double absD(double n){
         double a;
