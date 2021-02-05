@@ -38,12 +38,11 @@ public class Calculadora{
                 case 1:
                     System.out.print("Ingrese su valor x para hacer el cálculo: ");
                     x = gradosRad(sc.nextDouble());
-                    System.out.println("Todo bien");
-                    System.out.println(seno(x));
+                    System.out.println("Su resultado es: " + seno(x));
                     break;
                 case 2:
-                    System.out.print("Ingrese su valor x para hacer el cálculo: ");
-                    x = gradosRad(sc.nextDouble());
+                    //System.out.print("Ingrese su valor x para hacer el cálculo: ");
+                    //x = gradosRad(sc.nextDouble());
                     System.out.println(coseno(toRadian(60)));
                     break;
                 case 3:
@@ -75,17 +74,15 @@ public class Calculadora{
         int c = 0;
         while(eA > errorMeta){
             temp = (pow(-1, c) / factorial((2*c)+1) * pow(n, (2*c) + 1));
-        
             if(c == 0){
                 tempSuma = temp;
-                System.out.println(tempSuma);
-            } else {
-                
+            } else {    
                 tempSumaA = tempSuma;
                 tempSuma = tempSuma + temp;
                 eA = calEA(tempSuma, tempSumaA);
 
             }
+            c++;
         }
         return tempSuma;  
     }
@@ -150,7 +147,7 @@ public class Calculadora{
         if(potencia == 0) return 1;
         if(potencia == 1) return numero;
         if (potencia == -1) return 1 / numero;
-        double res = 1;
+        double res = numero;
         for(int x = 1; x<potencia; x++){
             res = res * numero;
         }
