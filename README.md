@@ -2,7 +2,7 @@
 Librería que hace los cálculos de las siguientes funciones:  
 Seno ✅  
 Coseno ✅  
-Logaritmo natural ❌  
+Logaritmo natural ✅  
 Raíz cuadrada ✅  
 Exponencial ✅  
 Los calculos se realizan usando series de MacLaurin.  
