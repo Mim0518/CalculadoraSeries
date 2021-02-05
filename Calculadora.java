@@ -44,6 +44,9 @@ public class Calculadora{
                     System.out.println("Su resultado es: " + coseno(x));
                     break;
                 case 3:
+                    System.out.print("Ingrese su valor x para hacer el cálculo: ");
+                    x = sc.nextDouble();
+                    System.out.println("Su resultado es: " + logaritmoN(x));
                     break;
                 case 4:
                     System.out.print("Ingrese un valor x para realizar el cálculo: ");
