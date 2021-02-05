@@ -24,10 +24,11 @@ public class Calculadora{
         while(opc != 0){
             System.out.println("1.- Calcular seno");
             System.out.println("2.- Calcular coseno");
-            System.out.println("3.- Calcular logaritmo");
-            System.out.println("4.- Calcular raíz cuadrada");
-            System.out.println("5.- Calcular exponencial");
-            System.out.println("6.- Cambiar presición");
+            System.out.println("3.- Calcular tangente");
+            System.out.println("4.- Calcular logaritmo");
+            System.out.println("5.- Calcular raíz cuadrada");
+            System.out.println("6.- Calcular exponencial");
+            System.out.println("7.- Cambiar presición");
             System.out.println("0.- Salir");
             System.out.print("Ingrese una opción: ");
             opc = sc.nextInt();
@@ -45,20 +46,25 @@ public class Calculadora{
                     break;
                 case 3:
                     System.out.print("Ingrese su valor x para hacer el cálculo: ");
-                    x = sc.nextDouble();
-                    System.out.println("Su resultado es: " + logaritmoN(x));
+                    x = gradosRad(sc.nextDouble());
+                    System.out.println("Su resultado es: " + tangente(x));
                     break;
                 case 4:
-                    System.out.print("Ingrese un valor x para realizar el cálculo: ");
+                    System.out.print("Ingrese su valor x para hacer el cálculo: ");
                     x = sc.nextDouble();
-                    System.out.println("Su resultado es: "+raiz(x));
+                    System.out.println("Su resultado es: " + logaritmoN(x));
                     break;
                 case 5:
                     System.out.print("Ingrese un valor x para realizar el cálculo: ");
                     x = sc.nextDouble();
-                    System.out.println("Su resultado es: "+exp(x));
+                    System.out.println("Su resultado es: "+raiz(x));
                     break;
                 case 6:
+                    System.out.print("Ingrese un valor x para realizar el cálculo: ");
+                    x = sc.nextDouble();
+                    System.out.println("Su resultado es: "+exp(x));
+                    break;
+                case 7:
                     System.out.print("Ingrese el número de cifras de precisión: ");
                     objetivoCifras = sc.nextInt();
                     errorMeta = eS(objetivoCifras);
@@ -72,6 +78,13 @@ public class Calculadora{
         }
         sc.close();
     }
+
+
+    //Cálculo de tangente de x
+    public static double tangente(double n){
+        return seno(n) / coseno(n);
+    }
+
 
     //Calculo seno de x
     public static double seno(double n){
