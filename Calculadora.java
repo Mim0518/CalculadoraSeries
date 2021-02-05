@@ -15,8 +15,8 @@ public class Calculadora{
         System.out.print("Ingrese el número de cifras de precisión: ");
         objetivoCifras = sc.nextInt();
         errorMeta = eS(objetivoCifras);
-        while(objetivoCifras == 0){
-            System.out.print("Primero tiene que ingresar el número de cifras significativas precisas: ");
+        while(objetivoCifras <= 0){
+            System.out.print("Primero tiene que ingresar el número de cifras significativas precisas, sin decimal y sin números negativos: ");
             objetivoCifras = sc.nextInt();
             errorMeta = eS(objetivoCifras);
         }
@@ -29,30 +29,34 @@ public class Calculadora{
             System.out.println("5.- Calcular exponencial");
             System.out.println("6.- Cambiar presición");
             System.out.println("0.- Salir");
-            System.out.println("Ingrese una opción: ");
+            System.out.print("Ingrese una opción: ");
             opc = sc.nextInt();
             double x = 0;
             switch(opc){
                 case 1:
-                    System.out.print("Ingrese su valor x para hacer el cálculo: ");
+                    System.out.print("Ingrese un valor x para realizar el cálculo: ");
                     x = gradosRad(sc.nextDouble());
                     System.out.println("Su resultado es: " + seno(x));
                     break;
                 case 2:
-                    System.out.print("Ingrese su valor x para hacer el cálculo: ");
+                    System.out.print("Ingrese un valor x para realizar el cálculo: ");
                     x = gradosRad(sc.nextDouble());
                     System.out.println("Su resultado es: " + coseno(x));
                     break;
                 case 3:
                     break;
                 case 4:
-                    System.out.println("Su resultado es: "+raiz(2));
+                    System.out.print("Ingrese un valor x para realizar el cálculo: ");
+                    x = sc.nextDouble();
+                    System.out.println("Su resultado es: "+raiz(x));
                     break;
                 case 5:
-                System.out.println("Su resultado es: "+exp(2));
+                    System.out.print("Ingrese un valor x para realizar el cálculo: ");
+                    x = sc.nextDouble();
+                    System.out.println("Su resultado es: "+exp(x));
                     break;
                 case 6:
-                    System.out.print("Ingrese el número de cifras significativas precisas: ");
+                    System.out.print("Ingrese el número de cifras de precisión: ");
                     objetivoCifras = sc.nextInt();
                     errorMeta = eS(objetivoCifras);
                     break;
@@ -65,7 +69,7 @@ public class Calculadora{
         }
         sc.close();
     }
-    
+
     //Calculo seno de x
     public static double seno(double n){
         double eA = 10;
@@ -99,6 +103,7 @@ public class Calculadora{
         }while (absD(sumando) > errorMeta);
         return sumatoria;
     }
+
     //Calculo de la raíz cuadrada
     public static double raiz(double x){
         double b = x, errorAct, estAnt = 1;
@@ -110,6 +115,7 @@ public class Calculadora{
 		}
 		return b;
     }
+
     //Exponencial
     public static double exp(double x){
         double sumando, sumatoria = 0, errorAct;
@@ -127,6 +133,7 @@ public class Calculadora{
 		}
         return sumatoria;
     }
+
     //Calcula EA
     //VV = VALOR ACTUAL
     //VA = VALOR ANTERIOR
@@ -154,6 +161,7 @@ public class Calculadora{
                     opcA = -1;
                     break;
                 default:
+                    System.out.print("Ingrese una opción válida");
                     break;
             }
         }
