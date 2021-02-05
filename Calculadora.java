@@ -199,6 +199,7 @@ public class Calculadora{
         }
         return 1/a ;
     }
+    
     //Calcula el error meta con las cifras deseadas
     public static double eS(double cifras){
         double a = 0;
