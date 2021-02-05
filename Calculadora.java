@@ -46,10 +46,10 @@ public class Calculadora{
                 case 3:
                     break;
                 case 4:
-                    
                     System.out.println("Su resultado es: "+raiz(2));
                     break;
                 case 5:
+                System.out.println("Su resultado es: "+exp(2));
                     break;
                 case 6:
                     System.out.print("Ingrese el número de cifras significativas precisas: ");
@@ -57,7 +57,7 @@ public class Calculadora{
                     errorMeta = eS(objetivoCifras);
                     break;
                 case 0:
-                    System.out.println("Cadena");
+                    System.out.println("Elaborado por Luis Fernando Chávez Jiménez y Guillermo Moreno Rivera");
                     break;
                 default:
                     break;
@@ -91,7 +91,6 @@ public class Calculadora{
     //Calculo de coseno
     public static double coseno(double x){
         double sumando, sumatoria = 0;
-        // limite superior, iteracion de la sumatoria
         int n = 0; 
         do{
             sumando = pow(-1, n) / factorial(2 * n) * pow(x, 2*n);
@@ -110,6 +109,23 @@ public class Calculadora{
             estAnt = b;
 		}
 		return b;
+    }
+    //Exponencial
+    public static double exp(double x){
+        double sumando, sumatoria = 0, errorAct;
+        errorAct = 10000;
+        int n = 0;
+        while (errorAct>errorMeta){
+			if(n == 0) sumando = 1;
+            else if(n == 1) sumando = x;
+            else{
+                sumando = pow(x, n)/factorial(n);
+            }
+            sumatoria = sumatoria + sumando;
+            n = n + 1;
+            errorAct = calEA(sumatoria, (sumatoria-sumando));
+		}
+        return sumatoria;
     }
     //Calcula EA
     //VV = VALOR ACTUAL
