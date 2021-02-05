@@ -11,7 +11,15 @@ public class Calculadora{
     static double cifras;
     static Scanner sc = new Scanner(System.in);
     public static void main (String []args){
-        
+        //Evalua que se haya1 ingresado las cifras significativas antes de comenzar el programa
+        System.out.print("Ingrese el número de cifras de precisión: ");
+        objetivoCifras = sc.nextInt();
+        errorMeta = eS(objetivoCifras);
+        while(objetivoCifras == 0){
+            System.out.print("Primero tiene que ingresar el número de cifras significativas precisas: ");
+            objetivoCifras = sc.nextInt();
+            errorMeta = eS(objetivoCifras);
+        }
         int opc = 1;
         while(opc != 0){
             System.out.println("1.- Calcular seno");
@@ -24,15 +32,6 @@ public class Calculadora{
             System.out.println("Ingrese una opción: ");
             opc = sc.nextInt();
             double x = 0;
-            //Evalua que se haya1 ingresado las cifras significativas antes de comenzar el programa
-            if(opc != 6){
-                while(objetivoCifras == 0){
-                    System.out.print("Primero tiene que ingresar el número de cifras significativas precisas: ");
-                    objetivoCifras = sc.nextInt();
-                    errorMeta = eS(objetivoCifras);
-                }
-
-            }
             switch(opc){
                 case 1:
                     System.out.print("Ingrese su valor x para hacer el cálculo: ");
@@ -47,6 +46,8 @@ public class Calculadora{
                 case 3:
                     break;
                 case 4:
+                    
+                    System.out.println("Su resultado es: "+raiz(2));
                     break;
                 case 5:
                     break;
@@ -64,6 +65,7 @@ public class Calculadora{
         }
         sc.close();
     }
+    
     //Calculo seno de x
     public static double seno(double n){
         double eA = 10;
@@ -85,22 +87,37 @@ public class Calculadora{
         }
         return tempSuma;  
     }
+
     //Calculo de coseno
     public static double coseno(double x){
         double sumando, sumatoria = 0;
         // limite superior, iteracion de la sumatoria
         int n = 0; 
-        do {
+        do{
             sumando = pow(-1, n) / factorial(2 * n) * pow(x, 2*n);
             sumatoria = sumatoria + sumando;
             n = n + 1;
-        } while (absD(sumando) > errorMeta);
+        }while (absD(sumando) > errorMeta);
         return sumatoria;
     }
-    //Calcula EA
-    public static double calEA(double VV, double VA){
-        return ((absD(VV -VA)) / VV ) * 100;
+    //Calculo de la raíz cuadrada
+    public static double raiz(double x){
+        double b = x, errorAct, estAnt = 1;
+        errorAct = 10000;
+		while (errorAct>errorMeta){
+			b=((x/b)+b)/2;
+            errorAct = calEA(estAnt, b);
+            estAnt = b;
+		}
+		return b;
     }
+    //Calcula EA
+    //VV = VALOR ACTUAL
+    //VA = VALOR ANTERIOR
+    public static double calEA(double VV, double VA){
+        return ((absD(VV - VA)) / VV ) * 100;
+    }
+
     //Pregunta si el cálculo será en gradaos o en radianes
     public static double gradosRad(double x){
         double a = 0;
@@ -141,6 +158,7 @@ public class Calculadora{
         }
         return fact;
     } 
+
     //Eleva a la potencia de un número positivo
     public static double pow(double numero, double potencia){
         if(potencia == 0) return 1;
@@ -152,6 +170,7 @@ public class Calculadora{
         }
         return res;
     }
+
     //Calcula el valor absoluto de un número con punto decimal
     public static double absD(double n){
         double a;
@@ -159,6 +178,7 @@ public class Calculadora{
         else a = n * (-1);
         return a;
     }
+
     //Eleva a la potencia de un numero negativo
     public static double powN(double n, double p){
         p = absD(p);
@@ -168,6 +188,7 @@ public class Calculadora{
         }
         return 1/a ;
     }
+
     //Calcula el error meta con las cifras deseadas
     public static double eS(double cifras){
         double a = 0;
