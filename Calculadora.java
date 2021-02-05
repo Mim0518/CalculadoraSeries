@@ -40,9 +40,9 @@ public class Calculadora{
                     System.out.println("Su resultado es: " + seno(x));
                     break;
                 case 2:
-                    //System.out.print("Ingrese su valor x para hacer el cálculo: ");
-                    //x = gradosRad(sc.nextDouble());
-                    System.out.println(coseno(toRadian(60)));
+                    System.out.print("Ingrese su valor x para hacer el cálculo: ");
+                    x = gradosRad(sc.nextDouble());
+                    System.out.println("Su resultado es: " + coseno(x));
                     break;
                 case 3:
                     break;
