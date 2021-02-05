@@ -21,7 +21,7 @@ public class Calculadora{
             System.out.println("5.- Calcular exponencial");
             System.out.println("6.- Cambiar presición");
             System.out.println("0.- Salir");
-            System.out.println("Ingrese una opción: ");
+            System.out.print("Ingrese una opción: ");
             opc = sc.nextInt();
             double x = 0;
             //Evalua que se haya1 ingresado las cifras significativas antes de comenzar el programa
@@ -45,6 +45,9 @@ public class Calculadora{
                     System.out.println("Su resultado es: " + coseno(x));
                     break;
                 case 3:
+                    System.out.print("Ingrese su valor x para hacer el cálculo: ");
+                    x = sc.nextDouble();
+                    System.out.println("Su resultado es: " + logaritmoN(x));
                     break;
                 case 4:
                     break;
@@ -97,6 +100,34 @@ public class Calculadora{
         } while (absD(sumando) > errorMeta);
         return sumatoria;
     }
+    //Calculo de ln
+    public static double logaritmoN(double n){
+        errorMeta =errorMeta *0.01;
+        double eA = 10;
+        double temp = 0;
+        double tempSuma = 0;
+        double tempSumaA =0;
+        double j = 0;
+        int c = 0;
+        while (eA > errorMeta) {
+        //while (c!= 5) {
+
+            j = (2*c)+1;
+            temp = 2 * ((1/(j))*(pow(((n-1)/(n+1)), j)));
+            
+            if(c == 0){
+                tempSuma = temp;
+            } else {    
+                tempSumaA = tempSuma;
+                tempSuma = tempSuma + temp;
+                eA = calEA(tempSuma, tempSumaA);
+            }
+            c++;
+        }
+        return tempSuma;
+    }
+
+
     //Calcula EA
     public static double calEA(double VV, double VA){
         return ((absD(VV -VA)) / VV ) * 100;
