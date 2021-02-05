@@ -100,32 +100,7 @@ public class Calculadora{
         } while (absD(sumando) > errorMeta);
         return sumatoria;
     }
-    //Calculo de ln
-    public static double logaritmoN(double n){
-        errorMeta =errorMeta *0.01;
-        double eA = 10;
-        double temp = 0;
-        double tempSuma = 0;
-        double tempSumaA =0;
-        double j = 0;
-        int c = 0;
-        while (eA > errorMeta) {
-        //while (c!= 5) {
 
-            j = (2*c)+1;
-            temp = 2 * ((1/(j))*(pow(((n-1)/(n+1)), j)));
-            
-            if(c == 0){
-                tempSuma = temp;
-            } else {    
-                tempSumaA = tempSuma;
-                tempSuma = tempSuma + temp;
-                eA = calEA(tempSuma, tempSumaA);
-            }
-            c++;
-        }
-        return tempSuma;
-    }
 
 
     //Calcula EA
@@ -207,5 +182,32 @@ public class Calculadora{
             a = powN(10, 2-cifras);
         } else a = pow(10, 2-cifras);
         return 0.5f * a;
+    }
+
+    //Calculo de ln
+    public static double logaritmoN(double n){
+        errorMeta =errorMeta *0.01;
+        double eA = 10;
+        double temp = 0;
+        double tempSuma = 0;
+        double tempSumaA =0;
+        double j = 0;
+        int c = 0;
+        while (eA > errorMeta) {
+        //while (c!= 5) {
+
+            j = (2*c)+1;
+            temp = 2 * ((1/(j))*(pow(((n-1)/(n+1)), j)));
+            
+            if(c == 0){
+                tempSuma = temp;
+            } else {    
+                tempSumaA = tempSuma;
+                tempSuma = tempSuma + temp;
+                eA = calEA(tempSuma, tempSumaA);
+            }
+            c++;
+        }
+        return tempSuma;
     }
 }
