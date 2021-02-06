@@ -5,5 +5,6 @@ Coseno ✅
 Logaritmo natural ✅  
 Raíz cuadrada ✅  
 Exponencial ✅  
+Tangente ✅  
 Los calculos se realizan usando series de MacLaurin.  
 Creada por Guillermo Moreno Rivera y Luis Fernando Chávez Jiménez
