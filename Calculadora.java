@@ -11,7 +11,7 @@ public class Calculadora{
     static double cifras;
     static Scanner sc = new Scanner(System.in);
     public static void main (String []args){
-        //Evalua que se haya1 ingresado las cifras significativas antes de comenzar el programa
+        //Evalua que se haya ingresado las cifras significativas antes de comenzar el programa
         System.out.print("Ingrese el número de cifras de precisión: ");
         objetivoCifras = sc.nextInt();
         errorMeta = eS(objetivoCifras);
@@ -28,7 +28,7 @@ public class Calculadora{
             System.out.println("4.- Calcular logaritmo");
             System.out.println("5.- Calcular raíz cuadrada");
             System.out.println("6.- Calcular exponencial");
-            System.out.println("7.- Cambiar presición");
+            System.out.println("7.- Cambiar precisión");
             System.out.println("0.- Salir");
             System.out.print("Ingrese una opción: ");
             opc = sc.nextInt();
@@ -79,12 +79,10 @@ public class Calculadora{
         sc.close();
     }
 
-
     //Cálculo de tangente de x
     public static double tangente(double n){
         return seno(n) / coseno(n);
     }
-
 
     //Calculo seno de x
     public static double seno(double n){
