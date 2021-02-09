@@ -245,7 +245,6 @@ public class Calculadora{
 
     //Calculo de ln
     public static double logaritmoN(double n){
-        //errorMeta =errorMeta *0.01;
         double eA = 10;
         double temp = 0;
         double tempSuma = 0;
