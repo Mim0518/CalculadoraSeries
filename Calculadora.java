@@ -101,6 +101,7 @@ public class Calculadora{
                 eA = calEA(tempSuma, tempSumaA);
 
             }
+            System.out.println("Valor actual: "+tempSuma+", Error actual: "+eA);
             c++;
         }
         return tempSuma;  
@@ -112,6 +113,8 @@ public class Calculadora{
         int n = 0; 
         do{
             sumando = pow(-1, n) / factorial(2 * n) * pow(x, 2*n);
+            double errorAct = calEA(sumatoria, sumando);
+            System.out.println("Valor actual: "+sumando+", Error actual: "+errorAct);
             sumatoria = sumatoria + sumando;
             n = n + 1;
         }while (absD(sumando) > errorMeta);
@@ -125,6 +128,7 @@ public class Calculadora{
 		while (errorAct>errorMeta){
 			b=((x/b)+b)/2;
             errorAct = calEA(estAnt, b);
+            System.out.println("Valor actual: "+b+", Error actual: "+errorAct);
             estAnt = b;
 		}
 		return b;
@@ -144,6 +148,7 @@ public class Calculadora{
             sumatoria = sumatoria + sumando;
             n = n + 1;
             errorAct = calEA(sumatoria, (sumatoria-sumando));
+            System.out.println("Valor actual: "+sumando+", Error actual: "+errorAct);
 		}
         return sumatoria;
     }
@@ -259,6 +264,7 @@ public class Calculadora{
                 tempSuma = tempSuma + temp;
                 eA = calEA(tempSuma, tempSumaA);
             }
+            System.out.println("Valor actual: "+tempSuma+", Error actual: "+eA);
             c++;
         }
         return tempSuma;
