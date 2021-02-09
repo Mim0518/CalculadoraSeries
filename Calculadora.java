@@ -11,6 +11,7 @@ public class Calculadora{
     static double cifras;
     static Scanner sc = new Scanner(System.in);
     public static void main (String []args){
+
         //Evalua que se haya ingresado las cifras significativas antes de comenzar el programa
         System.out.print("Ingrese el número de cifras de precisión: ");
         objetivoCifras = sc.nextInt();
@@ -244,7 +245,7 @@ public class Calculadora{
 
     //Calculo de ln
     public static double logaritmoN(double n){
-        errorMeta =errorMeta *0.01;
+        //errorMeta =errorMeta *0.01;
         double eA = 10;
         double temp = 0;
         double tempSuma = 0;
